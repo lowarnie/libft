@@ -6,7 +6,7 @@
 /*   By: lowarnie <lowarnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 13:36:33 by lowarnie          #+#    #+#             */
-/*   Updated: 2023/11/08 13:36:50 by lowarnie         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:34:32 by lowarnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,15 @@ char	**ft_split(char const *s, char c)
 	n = 0;
 	i = count_str(s, c);
 	str_of_str = malloc(sizeof(char *) * (i + 1));
+	if (!str_of_str)
+		return (NULL);
 	while (n < i)
 	{
 		actualword = ft_actualword(s, nextword, c);
 		nextword = ft_nextword(s, actualword, c);
 		str_of_str[n] = malloc(sizeof(char) * (nextword - actualword + 1));
+		if (!str_of_str[n])
+			return (NULL);
 		ft_strlcpy(str_of_str[n], s + actualword, (nextword - actualword + 1));
 		n++;
 	}

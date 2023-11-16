@@ -6,7 +6,7 @@
 /*   By: lowarnie <lowarnie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:22:49 by lowarnie          #+#    #+#             */
-/*   Updated: 2023/11/08 14:04:24 by lowarnie         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:43:30 by lowarnie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int	i;
+	int		i;
+	char	*b;
 
-	i = ft_strlen(s);
+	b = (char *) s;
+	i = ft_strlen(b);
+	if (!(char)c)
+		return (b + ft_strlen(s));
 	while (i >= 0)
 	{
-		if (s[i] == c)
-			return ((char *)(s + i));
+		if (b[i] == ((char)c))
+			return (b + i);
 		i--;
 	}
-	if (c == 0)
-		return ((char *)(s + i));
 	return (NULL);
 }
